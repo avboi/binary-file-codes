@@ -58,6 +58,24 @@ def Updatingbinary():
             print('Record has been updated')
             file.close()
 
+def SearchBinary():
+    file = open('somebinary.dat')
+    search = int(input("Enter GPU id to search"))
+    found = False
+    try:
+        while True:
+            data = pickle.load(file)
+            for record in data:
+                if record[0] == search:
+                    print('GPU name: ', record[1])
+                    print('GPU Manufacturer: ', record[2])
+                    print('GPU Release Year: ', record[3])
+                    print('GPU Price: ', record[4]+'$')
+                    found = True
+    except Exception:
+        file.close()
+    if found == True:
+        print("Record has been found")
 
     
 
@@ -71,3 +89,7 @@ elif k == 3:
     Readintobinary()
 elif k == 4:
     Updatingbinary()
+elif k == 5:
+    SearchBinary()
+else:
+    print("Number invalid.... Exited code")
