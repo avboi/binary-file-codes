@@ -1,4 +1,5 @@
 import pickle
+from re import S
 print("Welcome to menu driven program for binary files.\n1. Creating Binary\n2. Adding to binary file\n3. Reading from binary\n4. Updating into a binary\n5. Searching into binary")
 k = int(input("Choose a number from above: "))
 
@@ -28,9 +29,10 @@ def Addintobinary():
 def Readintobinary():
     file = open('somebinary.dat', 'rb')
     try:
-        s = pickle.load(file)
-        for i in s:
-            print(i)
+        while True:
+            s = pickle.load(file)
+            for i in s:
+                print(i, end="\n")
     except EOFError:
         pass
     file.close()
